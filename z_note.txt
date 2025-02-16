@@ -9,3 +9,54 @@ Bosser Type Script
 
 MyPY
 
+
+
+
+
+
+
+medical_system_api/
+├── controllers/
+│   ├── appointmentController.js
+│   ├── doctorController.js
+│   ├── medicalRecordController.js
+│   ├── patientController.js
+│   └── prescriptionController.js
+├── routes/
+│   ├── appointmentRoutes.js
+│   ├── doctorRoutes.js
+│   ├── medicalRecordRoutes.js
+│   ├── patientRoutes.js
+│   └── prescriptionRoutes.js
+├── models/                  # Database models
+│   ├── Appointment.js
+│   ├── Doctor.js
+│   ├── MedicalRecord.js
+│   ├── Patient.js
+│   └── Prescription.js
+├── services/
+│   ├── appointmentService.js
+│   ├── doctorService.js
+│   ├── medicalRecordService.js
+│   ├── patientService.js
+│   └── prescriptionService.js
+├── middleware/              # Custom middleware
+│   ├── authMiddleware.js
+│   ├── errorHandler.js
+│   └── logger.js
+├── validators/              # Request validation
+│   ├── appointmentValidator.js
+│   ├── doctorValidator.js
+│   ├── medicalRecordValidator.js
+│   ├── patientValidator.js
+│   └── prescriptionValidator.js
+├── tests/                   # Test files
+│   ├── appointment.test.js
+│   ├── doctor.test.js
+│   ├── medicalRecord.test.js
+│   ├── patient.test.js
+│   └── prescription.test.js
+├── app.js                   # Main application entry point
+├── config.js                # Configuration files
+├── .env                     # Environment variables
+└── package.json             # Project dependencies and scripts

@@ -76,3 +76,4 @@ CREATE TABLE prescriptions (
     instructions TEXT NOT NULL,
     prescribed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
