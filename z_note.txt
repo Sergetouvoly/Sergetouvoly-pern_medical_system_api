@@ -60,3 +60,14 @@ medical_system_api/
 ├── config.js                # Configuration files
 ├── .env                     # Environment variables
 └── package.json             # Project dependencies and scripts
+
+
+INSERT DATA :
+psql -U postgres -d medical_system -f insert_data.sql
+
+create databas tables:
+psql -U postgres -d medical_system -f create_tables.sql
+
+// Kill all the node js running server
+// taskkill /im node.exe /f
+

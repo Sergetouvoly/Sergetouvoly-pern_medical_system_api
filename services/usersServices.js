@@ -1,24 +1,24 @@
 import db from '../db.js';
 
 // Create a new user
-export const createUser = async (last_name, first_name, phone) => {
+export const createUserService = async (last_name, first_name, phone) => {
     try {
         const result = await db.query(
             'INSERT INTO users (last_name, first_name, phone) VALUES ($1, $2, $3) RETURNING *',
             [last_name, first_name, phone]
         );
-        return result.rows[0]; // Return the created user
+        return result.rows[0]; 
     } catch (err) {
         console.error('Error creating user:', err);
-        throw err; // Propagate the error to the controller
+        throw err; 
     }
 };
 
 // Get all users
-export const getAllUsers = async () => {
+export const getAllUsersService = async () => {
     try {
         const result = await db.query('SELECT * FROM users');
-        return result.rows; // Return all users
+        return result.rows;
     } catch (err) {
         console.error('Error fetching users:', err);
         throw err;
@@ -26,10 +26,10 @@ export const getAllUsers = async () => {
 };
 
 // Get a user by ID
-export const getUserById = async (id) => {
+export const getUserByIdService = async (id) => {
     try {
         const result = await db.query('SELECT * FROM users WHERE id = $1', [id]);
-        return result.rows[0]; // Return the user (or undefined if not found)
+        return result.rows; 
     } catch (err) {
         console.error('Error fetching user by ID:', err);
         throw err;
@@ -37,7 +37,7 @@ export const getUserById = async (id) => {
 };
 
 // Update a user
-export const updateUser = async (id, last_name, first_name, phone) => {
+export const updateUserService = async (id, last_name, first_name, phone) => {
     try {
         const result = await db.query(
             'UPDATE users SET last_name = $1, first_name = $2, phone = $3 WHERE id = $4 RETURNING *',
@@ -51,10 +51,10 @@ export const updateUser = async (id, last_name, first_name, phone) => {
 };
 
 // Delete a user
-export const deleteUser = async (id) => {
+export const deleteUserService = async (id) => {
     try {
         const result = await db.query('DELETE FROM users WHERE id = $1 RETURNING *', [id]);
-        return result.rows[0]; // Return the deleted user
+        return result.rows; // Return the deleted user
     } catch (err) {
         console.error('Error deleting user:', err);
         throw err;
@@ -62,10 +62,10 @@ export const deleteUser = async (id) => {
 };
 
 // Get a user by phone number
-export const getUserByPhone = async (phone) => {
+export const getUserByPhoneService = async (phone) => {
     try {
         const result = await db.query('SELECT * FROM users WHERE phone = $1', [phone]);
-        return result.rows[0]; // Return the user (or undefined if not found)
+        return result.rows; // Return the user (or undefined if not found)
     } catch (err) {
         console.error('Error fetching user by phone:', err);
         throw err;
