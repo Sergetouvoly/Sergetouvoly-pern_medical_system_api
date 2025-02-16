@@ -1,0 +1,10 @@
+PRISMA ORM
+
+YUP pour valider les données
+
+WINDSURD IDE 
+
+
+Bosser Type Script
+
+MyPY
