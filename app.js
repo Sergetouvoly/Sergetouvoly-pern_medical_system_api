@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
     
 });
 app.use('/api',usersRoute );      
-app.use('/api/',patientsRoute);
+app.use('/api',patientsRoute);
 
 app.listen(port, ()=> {
     console.log(`server is running at http://localhost:${port}`);

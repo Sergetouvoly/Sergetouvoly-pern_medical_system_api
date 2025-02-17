@@ -5,10 +5,10 @@ import express from 'express';
 const router = express.Router();
 
 // Define routes
-router.post('/', createPatientController);
-router.get('/', getAllPatientsController);  
-router.get('/:id', getPatientByIdController);
-router.put('/:id', updatePatientController);
-router.delete('/:id', deletePatientController);
+router.post('/patients', createPatientController);
+router.get('/patients', getAllPatientsController);  
+router.get('/patients/:id', getPatientByIdController);
+router.put('/patients/:id', updatePatientController);
+router.delete('/patients/:id', deletePatientController);
 
 export default router;

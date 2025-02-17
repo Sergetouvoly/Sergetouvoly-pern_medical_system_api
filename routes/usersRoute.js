@@ -4,10 +4,10 @@ import express from 'express';
 const router = express.Router();
 
 // Define routes
-router.post('/', createUserController);
-router.get('/', getAllUsersController);
-router.get('/:id', getUserByIdController);
-router.put('/:id', updateUserController);
-router.delete('/:id', deleteUserController);
+router.post('/users', createUserController);
+router.get('/users', getAllUsersController);
+router.get('/users/:id', getUserByIdController);
+router.put('/users/:id', updateUserController);
+router.delete('/users/:id', deleteUserController);
 
 export default router;

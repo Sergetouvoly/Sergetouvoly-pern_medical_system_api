@@ -24,7 +24,7 @@ export const getAllPatientsService = async () => {
 
 export const getPatientByIdService = async (id) => {
     try {
-        const result = await db.query('SELECT * from patients WHERE id = $1', [id]);
+        const result = await db.query('SELECT * from patients WHERE patient_id = $1', [id]);
         return result.rows[0];
     } catch (err) {
         console.error('Error fetching patient by ID:', err);
@@ -35,7 +35,7 @@ export const getPatientByIdService = async (id) => {
 export const updatePatientService = async (id, last_name, first_name, date_of_birth, gender, phone, email, address) => {
     try {
         const result = await db.query(
-            'UPDATE patients SET last_name = $1, first_name = $2, date_of_birth = $3, gender = $4, phone = $5, email = $6, address = $7 WHERE id = $8 RETURNING *',
+            'UPDATE patients SET last_name = $1, first_name = $2, date_of_birth = $3, gender = $4, phone = $5, email = $6, address = $7 WHERE patient_id = $8 RETURNING *',
              [last_name, first_name, date_of_birth, gender, phone, email, address, id]);
         return result.rows[0];
     } catch (err) {
@@ -46,7 +46,7 @@ export const updatePatientService = async (id, last_name, first_name, date_of_bi
 
 export const deletePatientService = async (id) => {
     try {
-        const result = await db.query('DELETE FROM patients WHERE id = $1 RETURNING *', [id]);
+        const result = await db.query('DELETE FROM patients WHERE patient_id = $1 RETURNING *', [id]);
         return result.rows[0];
     } catch (err) {
         console.error('Error deleting patient:', err);
@@ -57,9 +57,19 @@ export const deletePatientService = async (id) => {
 export const getPatientByPhoneService = async (phone) => {
     try {
         const result = await db.query('SELECT * from patients WHERE phone = $1', [phone]);
-        return result.rows[0];
+        return result.rows;
     } catch (err) {
         console.error('Error fetching patient by phone:', err);
+        throw err;
+    }
+};
+
+export const getPatientByEmailService = async (email) => {
+    try {
+        const result = await db.query('SELECT * from patients WHERE email = $1', [email]);
+        return result.rows;
+    } catch (err) {
+        console.error('Error fetching patient by email:', err);
         throw err;
     }
 };
