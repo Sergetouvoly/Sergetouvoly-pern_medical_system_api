@@ -8,7 +8,7 @@ export const getAllAppointmentsController = async (req, res) => {
         if(!appointments || appointments.length === 0) {
             return res.status(404).json({ error: 'No appointments found.' });
         }
-        return res.status(201).json(appointments);
+        return res.status(200).json(appointments);
     } catch (err) {
         console.error('Error fetching appointments:', err);
         res.status(500).json({ error: 'An internal server error occurred.' });

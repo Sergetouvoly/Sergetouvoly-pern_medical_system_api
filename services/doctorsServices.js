@@ -10,6 +10,19 @@ export const getAllDoctorsService = async () => {
     }
 };
 
+export const getDoctorByIdController = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const doctor = await getDoctorByIdService(id);
+        if (!doctor || doctor.length === 0) {
+            return res.status(404).json({ error: 'Doctor not found' });
+        }
+        res.status(200).json(doctor);
+    } catch (err) {
+        console.error('Error fetching doctor by ID:', err);
+        res.status(500).json({ error: 'Error fetching doctor by ID' });
+    }
+}
 export const getDoctorByIdService = async (id) => {
     try {
         const result = await db.query('SELECT * from doctors WHERE doctor_id = $1', [id]);
